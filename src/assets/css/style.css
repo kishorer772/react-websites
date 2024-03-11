@@ -16,14 +16,35 @@
   flex-direction: column;
   align-items: flex-start;
   border-radius: 1rem;
-  padding: 1.5rem;
+  padding: 1rem;
   margin: 0.5rem;
-  list-style: none;
+  /* list-style: none; */
 }
 
 .a__toast__header {
   font-weight: 600;
 }
-li {
+.a__toast__info {
   padding-block: 0.5rem;
+}
+
+ol > li {
+  padding-block: 0.25rem;
+}
+
+.custom-table .ant-table-row {
+  height: 1rem; /* Adjust the height as needed */
+}
+/* 
+.a__user__table__text {
+  font-size: 0.7rem;
+  color: rgb(38, 210, 240);
+  background-color: rgb(38, 210, 240);
+  /* opacity: 0.5; */
+/* box-shadow: 0 0 10px rgb(38, 210, 240);
+  border-radius: 0.5rem;
+}  */
+
+.a__user__table {
+  padding-inline: 0.25rem;
 }

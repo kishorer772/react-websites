@@ -1,0 +1,29 @@
+.a__btn {
+  padding-inline: 0.4rem;
+}
+.a__imgContainer {
+  border-radius: 50%;
+}
+
+.a__breadcrumb {
+  padding: 1.2rem;
+  margin: 0;
+}
+
+.a__toast {
+  background-color: #f3f4f8;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin: 0.5rem;
+  list-style: none;
+}
+
+.a__toast__header {
+  font-weight: 600;
+}
+li {
+  padding-block: 0.5rem;
+}

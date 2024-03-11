@@ -9,12 +9,12 @@ import {
   Menu,
   Pagination,
   Select,
-  Space,
   Table,
   message,
 } from 'antd';
 import './assets/css/style.css';
 import logo from './logo.svg';
+import userImage from './assets/images/user.png';
 import {
   HomeOutlined,
   LogoutOutlined,
@@ -22,7 +22,8 @@ import {
   SearchOutlined,
   UserAddOutlined,
   UserOutlined,
-  DownOutlined,
+  DownCircleFilled,
+  BellOutlined,
 } from '@ant-design/icons';
 import { getItem } from './utils/helper';
 import Sider from 'antd/es/layout/Sider';
@@ -137,6 +138,10 @@ const AppLayout = () => {
     items,
     onClick: handleMenuClick,
   };
+  const menuPropsdropdown = {
+    itemsProps,
+    onClick: handleMenuClick,
+  };
   const [title, setTitle] = useState('kishore');
   return (
     <>
@@ -154,7 +159,6 @@ const AppLayout = () => {
           <div>
             <img
               src={logo}
-              //   className="App-logo"
               alt="logo"
               style={{ width: '100%', height: '10vh' }}
             />
@@ -173,7 +177,7 @@ const AppLayout = () => {
             mode="inline"
           ></Menu>
 
-          <div style={{ position: 'relative', left: 0, bottom: -40 }}>
+          <div style={{ position: 'relative', left: 0, bottom: -70 }}>
             <div
               style={{
                 display: 'flex',
@@ -205,36 +209,61 @@ const AppLayout = () => {
         </Sider>
         <Layout style={{ height: '100vh' }}>
           <Content style={{ backgroundColor: 'white' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <Breadcrumb
-                className="a__breadcrumb"
-                items={[
-                  { title: 'Home' },
-                  { title: 'Community' },
-                  { title: 'Add Users' },
-                ]}
-                separator=">"
-              />
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                width: '100%',
+              }}
+            >
+              <div
+                style={{
+                  width: '88%',
+                }}
+              >
+                <Breadcrumb
+                  className="a__breadcrumb"
+                  items={[
+                    { title: 'Home' },
+                    { title: 'Community' },
+                    { title: 'Add Users' },
+                  ]}
+                  separator=">"
+                />
+              </div>
               <div
                 style={{
                   display: 'flex',
                   alignItems: 'center',
+                  justifyContent: 'space-between',
                   paddingInline: '1rem',
+
+                  width: '12%',
                 }}
               >
-                <Dropdown menu={itemsProps}>
+                <Button
+                  type="link"
+                  icon={<BellOutlined />}
+                  style={{ padding: '0.25rem' }}
+                ></Button>
+                <Button
+                  type="text"
+                  icon={
+                    <img
+                      src={userImage}
+                      alt="icon"
+                      style={{ width: '18px', height: '18px' }}
+                    />
+                  }
+                ></Button>
+                <Dropdown menu={menuProps}>
                   <Button>
-                    <Space>
-                      Button
-                      <DownOutlined />
-                    </Space>
+                    <DownCircleFilled />
                   </Button>
                 </Dropdown>
               </div>
             </div>
-            <Divider
-              style={{ marginBottom: '1rem !important', marginTop: 0 }}
-            ></Divider>
+            <Divider style={{ marginBottom: '1rem', marginTop: 0 }}></Divider>
             <div className="a__toast">
               <span className="a__toast__info">
                 Invite Members to your Community
@@ -248,18 +277,19 @@ const AppLayout = () => {
                   necessary.
                 </li>
                 <li>
-                  You can download template to understand and create the right
-                  structure
+                  You can <StyleText>download template</StyleText>
+                  to understand and create the right structure
                 </li>
               </ol>
               <span className="a__toast__info">
-                Create multiple users by uploading a CSV
+                Create multiple users by <StyleText>uploading a CSV</StyleText>
               </span>
             </div>
 
             <div
               style={{
                 paddingBlock: '0.5rem',
+                paddingInline: '0.5rem',
                 overflowY: 'scroll',
                 display: 'flex',
                 flexDirection: 'column',
@@ -301,7 +331,11 @@ const AppLayout = () => {
                     justifyContent: 'end',
                   }}
                 >
-                  <Button icon={<UserAddOutlined />} primary type="default">
+                  <Button
+                    icon={<UserAddOutlined />}
+                    primary="true"
+                    type="default"
+                  >
                     Add
                   </Button>
                   <Button type="primary" disabled={true}>
@@ -313,7 +347,7 @@ const AppLayout = () => {
                 columns={tableColumns}
                 dataSource={data}
                 pagination={false}
-                style={{ width: '100%', height: '100px', overflowY: 'scroll' }}
+                style={{ width: '100%', height: '140px', overflowY: 'scroll' }}
                 className="custom-table"
               ></Table>
             </div>
@@ -339,3 +373,7 @@ const AppLayout = () => {
 };
 
 export default AppLayout;
+
+const StyleText = ({ color = 'rgb(12,159,251)' }) => {
+  return <span style={{ color: color }}>download template</span>;
+};

@@ -15,13 +15,6 @@ export const roles = [
 ];
 export const data = [
   {
-    sno: 1234,
-    mail: 'user1@gmail.com',
-    lastname: 'mmm',
-    role: 'admin',
-    group: 'dev',
-  },
-  {
     sno: 1231,
     mail: 'janedoe@gmail.com',
     lastname: 'doe',

@@ -1,379 +1,68 @@
+import { Button } from '@mui/base';
+import { AppBar, Breadcrumbs, Drawer, IconButton, Link, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography } from '@mui/material';
+import Toolbar from '@mui/material/Toolbar';
+import { Box } from '@mui/system';
 import React, { useState } from 'react';
-import Layout, { Content } from 'antd/es/layout/layout';
-import {
-  Breadcrumb,
-  Button,
-  Divider,
-  Dropdown,
-  Input,
-  Menu,
-  Pagination,
-  Select,
-  Table,
-  message,
-} from 'antd';
-import './assets/css/style.css';
-import logo from './logo.svg';
-import userImage from './assets/images/user.png';
-import {
-  HomeOutlined,
-  LogoutOutlined,
-  MailOutlined,
-  SearchOutlined,
-  UserAddOutlined,
-  UserOutlined,
-  DownCircleFilled,
-  BellOutlined,
-} from '@ant-design/icons';
-import { getItem } from './utils/helper';
-import Sider from 'antd/es/layout/Sider';
-import { data, roles } from './assets/data/table-data';
-
-const items = [
-  getItem('Discover', 'sub1', <HomeOutlined />),
-  getItem('LeaderBoard', 'sub2', <HomeOutlined />),
-  getItem('My Content', 'sub3', <HomeOutlined />),
-  getItem('Browse Channels', 'sub4', <HomeOutlined />),
-  getItem('Website', 'sub5', <HomeOutlined />),
-  getItem('Community', 'sub6', null, [
-    getItem('Option 5', '5', <HomeOutlined />),
-    getItem('Option 6', '6', <HomeOutlined />),
-  ]),
-  {
-    type: 'divider',
-  },
-  getItem('Learning Path', 'sub7', null, [
-    getItem('Option 9', '9'),
-    getItem('Option 10', '10'),
-    getItem('Option 11', '11'),
-    getItem('Option 12', '12'),
-  ]),
-  getItem('Learning Path', 'sub8', null, [
-    getItem('Option 9', '13'),
-    getItem('Option 10', '14'),
-    getItem('Option 11', '15'),
-    getItem('Option 12', '16'),
-  ]),
-];
-const AppLayout = () => {
-  const tableColumns = [
-    {
-      key: 'sno',
-      title: 'SI no',
-      dataIndex: 'sno',
-    },
-    {
-      key: 'mail',
-      title: (
-        <span>
-          <MailOutlined /> Email
-        </span>
-      ),
-      dataIndex: 'mail',
-    },
-    {
-      key: 'lastname',
-      title: (
-        <span>
-          <UserOutlined /> Last Name
-        </span>
-      ),
-      dataIndex: 'lastname',
-    },
-    {
-      key: 'role',
-      title: 'Role',
-      dataIndex: 'role',
-      render: (text, record) => (
-        <Select
-          value={roles[0]}
-          style={{ width: 120 }}
-          options={roles}
-        ></Select>
-      ),
-    },
-    {
-      key: 'group',
-      title: 'Group',
-      dataIndex: 'group',
-      render: (text, record) => (
-        <Select
-          value={roles[0]}
-          style={{ width: 120 }}
-          options={roles}
-        ></Select>
-      ),
-    },
-  ];
-  const handleMenuClick = (e) => {
-    message.info('Click on menu item.');
-    console.log('click', e);
-  };
-  const itemsProps = [
-    {
-      label: '1st menu item',
-      key: '1',
-      icon: <UserOutlined />,
-    },
-    {
-      label: '2nd menu item',
-      key: '2',
-      icon: <UserOutlined />,
-    },
-    {
-      label: '3rd menu item',
-      key: '3',
-      icon: <UserOutlined />,
-      danger: true,
-    },
-    {
-      label: '4rd menu item',
-      key: '4',
-      icon: <UserOutlined />,
-      danger: true,
-      disabled: true,
-    },
-  ];
-  const menuProps = {
-    items,
-    onClick: handleMenuClick,
-  };
-  const menuPropsdropdown = {
-    itemsProps,
-    onClick: handleMenuClick,
-  };
-  const [title, setTitle] = useState('kishore');
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import MenuIcon from '@mui/icons-material/Menu';
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import MailIcon from '@mui/icons-material/Mail';
+const Layout = () => {
+  const[open,setOpen] = useState(false)
   return (
-    <>
-      <Layout>
-        <Sider
-          width={200}
-          style={{
-            height: '100vh',
-            backgroundColor: 'white',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between',
-          }}
-        >
-          <div>
-            <img
-              src={logo}
-              alt="logo"
-              style={{ width: '100%', height: '10vh' }}
-            />
-          </div>
-          <div>
-            <Input
-              placeholder="Search"
-              style={{ marginInline: '0.4rem', width: '90%' }}
-              prefix={<SearchOutlined style={{ color: '#1890ff' }} />}
-            />
-          </div>
-          <Menu
-            items={items}
-            defaultSelectedKeys={['1']}
-            defaultOpenKeys={['sub1']}
-            mode="inline"
-          ></Menu>
+   <Box  sx={{ flexGrow: 1 }}>
+    <AppBar position="static" sx={{p:1}} >
+    <Toolbar>
+      <IconButton onClick={()=>setOpen(!open)} edge="start">
+        <MenuIcon/>
+      </IconButton>
+        <Typography variant="h6" component="div" sx={{flexGrow:1}}>
+        {/* <p>hello</p> */}
+      <Breadcrumbs separator=">"  >
+        <Link underline="hover" color="inherit" href="/">MUI</Link>
+        <Link underline="hover" color="inherit" href="/">MUI</Link>
+        <Link underline="hover" color="inherit" href="/">MUI</Link>
+      </Breadcrumbs>
+        </Typography>
+        <IconButton > <NotificationsIcon/></IconButton>
+        <Button> image</Button>
+        <Button> Dropdown</Button>
+    </Toolbar>
+    </AppBar>
+    <Drawer variant='persistent' anchor="left" open={open} sx={{width:240}}>
+      <IconButton>
+        <ArrowRightIcon onClick={()=>setOpen(!open)}/>
+      </IconButton>
+    <List>
+      <ListItem href="/" >
+        
+        <ListItemButton>
+          <ListItemIcon>
+          <MailIcon/>
+          </ListItemIcon>
+          <ListItemText primary="Inbox"/>
+          </ListItemButton>
+          </ListItem>
+          <ListItem href="/" >
+        
+        <ListItemButton>
+          <ListItemIcon>
+          <MailIcon/>
+          </ListItemIcon>
+          <ListItemText primary="Outbox"/>
+          </ListItemButton>
+          </ListItem>
+    </List>
+    </Drawer>
 
-          <div style={{ position: 'relative', left: 0, bottom: -70 }}>
-            <div
-              style={{
-                display: 'flex',
-                height: '10%',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-              }}
-            >
-              <div
-                className="a__imgContainer"
-                style={{
-                  width: '20%',
-                  height: '10vh',
-                  display: 'flex',
-                  alignItems: 'center',
-                }}
-              >
-                <img src={logo} alt="logo" />
-              </div>
-              <div className="a__usernames">
-                <p style={{ fontSize: '0.7rem' }}>username</p>
-                <p style={{ fontSize: '0.7rem' }}>user@gmail.com</p>
-              </div>
-              <div className="a__btn">
-                <Button icon={<LogoutOutlined />}></Button>
-              </div>
-            </div>
-          </div>
-        </Sider>
-        <Layout style={{ height: '100vh' }}>
-          <Content style={{ backgroundColor: 'white' }}>
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                width: '100%',
-              }}
-            >
-              <div
-                style={{
-                  width: '88%',
-                }}
-              >
-                <Breadcrumb
-                  className="a__breadcrumb"
-                  items={[
-                    { title: 'Home' },
-                    { title: 'Community' },
-                    { title: 'Add Users' },
-                  ]}
-                  separator=">"
-                />
-              </div>
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  paddingInline: '1rem',
-
-                  width: '12%',
-                }}
-              >
-                <Button
-                  type="link"
-                  icon={<BellOutlined />}
-                  style={{ padding: '0.25rem' }}
-                ></Button>
-                <Button
-                  type="text"
-                  icon={
-                    <img
-                      src={userImage}
-                      alt="icon"
-                      style={{ width: '18px', height: '18px' }}
-                    />
-                  }
-                ></Button>
-                <Dropdown menu={menuProps}>
-                  <Button>
-                    <DownCircleFilled />
-                  </Button>
-                </Dropdown>
-              </div>
-            </div>
-            <Divider style={{ marginBottom: '1rem', marginTop: 0 }}></Divider>
-            <div className="a__toast">
-              <span className="a__toast__info">
-                Invite Members to your Community
-              </span>
-              <span className="a__toast__info">Requirements</span>
-              <ol className="a__toast">
-                <li>Email ,username, firstname and lastname are required</li>
-                <li>
-                  For Organisation and Reseller, the organisation name is
-                  required. If the user is a Guet, both start and end dates are
-                  necessary.
-                </li>
-                <li>
-                  You can <StyleText>download template</StyleText>
-                  to understand and create the right structure
-                </li>
-              </ol>
-              <span className="a__toast__info">
-                Create multiple users by <StyleText>uploading a CSV</StyleText>
-              </span>
-            </div>
-
-            <div
-              style={{
-                paddingBlock: '0.5rem',
-                paddingInline: '0.5rem',
-                overflowY: 'scroll',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'flex-start',
-                width: '98%',
-                borderRadius: '1rem',
-                boxShadow: '0 0 10px #bbb',
-                margin: '0 auto',
-                overflow: 'hidden',
-              }}
-            >
-              <div
-                style={{
-                  paddingInline: '1rem',
-                  paddingBlock: '0.25rem',
-                  display: 'flex',
-                  width: '100%',
-                  justifyContent: 'space-between',
-                }}
-              >
-                {title ? (
-                  <div>
-                    <span className="a__user__table">{title} </span>
-                    <Button
-                      style={{
-                        borderRadius: '1rem',
-                        color: 'white',
-                      }}
-                      type="primary"
-                    >
-                      {title}
-                    </Button>
-                  </div>
-                ) : null}
-                <div
-                  style={{
-                    display: 'flex',
-                    marginRight: '18px',
-                    justifyContent: 'end',
-                  }}
-                >
-                  <Button
-                    icon={<UserAddOutlined />}
-                    primary="true"
-                    type="default"
-                  >
-                    Add
-                  </Button>
-                  <Button type="primary" disabled={true}>
-                    submit
-                  </Button>
-                </div>
-              </div>
-              <Table
-                columns={tableColumns}
-                dataSource={data}
-                pagination={false}
-                style={{ width: '100%', height: '140px', overflowY: 'scroll' }}
-                className="custom-table"
-              ></Table>
-            </div>
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                width: '100%',
-                padding: '1rem',
-              }}
-            >
-              <Pagination
-                defaultCurrent={1}
-                total={50}
-                style={{ textAlign: 'center' }}
-              ></Pagination>
-            </div>
-          </Content>
-        </Layout>
-      </Layout>
-    </>
+    <Box sx={{backgroundColor:"#f3f4f8",p:2,borderRadius:2,m:3}}>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, aliquam adipisci. Beatae eum amet at a quis. Delectus, atque accusantium sunt, qui cumque beatae ex corrupti voluptate quos recusandae distinctio.</p>
+    </Box>
+    <Box sx={{bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : 'white'),borderRadius: 2,p:2,m:3,boxShadow:1}}>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, aliquam adipisci. Beatae eum amet at a quis. Delectus, atque accusantium sunt, qui cumque beatae ex corrupti voluptate quos recusandae distinctio.</p>
+    </Box>
+   </Box>
   );
 };
 
-export default AppLayout;
-
-const StyleText = ({ color = 'rgb(12,159,251)' }) => {
-  return <span style={{ color: color }}>download template</span>;
-};
+export default Layout;

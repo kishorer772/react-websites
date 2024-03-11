@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import './assets/css/style.css';
 import AppLayout from './Layout';

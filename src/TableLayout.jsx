@@ -19,7 +19,7 @@ const TableLayout = () => {
       <Toolbar sx={{ padding: '0 !important' }}>
         <Toolbar sx={{ gap: 1, flexGrow: 1 }}>
           <Typography> Jane</Typography>
-          <Chip label="User 07" />
+          <Chip label="User 07" color="primary" />
         </Toolbar>
         <Toolbar sx={{ gap: 1 }}>
           <Button

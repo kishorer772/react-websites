@@ -15,10 +15,13 @@ import {
 import React from 'react';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import SearchIcon from '@mui/icons-material/Search';
-import MailIcon from '@mui/icons-material/Mail';
 import { Add, ExpandLess, ExpandMore, Update } from '@mui/icons-material';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import QueryStatsIcon from '@mui/icons-material/QueryStats';
+import LeaderboardIcon from '@mui/icons-material/Leaderboard';
 import logo from './logo.svg';
+import MouseIcon from '@mui/icons-material/Mouse';
+import LanguageIcon from '@mui/icons-material/Language';
 const AppDrawer = ({ open, handleDrawer, toggle, handleClick }) => {
   return (
     <Drawer
@@ -68,7 +71,7 @@ const AppDrawer = ({ open, handleDrawer, toggle, handleClick }) => {
             <ListItem href="/" sx={{ p: 0 }}>
               <ListItemButton>
                 <ListItemIcon>
-                  <MailIcon />
+                  <QueryStatsIcon />
                 </ListItemIcon>
                 <ListItemText primary="Discover" />
               </ListItemButton>
@@ -76,9 +79,25 @@ const AppDrawer = ({ open, handleDrawer, toggle, handleClick }) => {
             <ListItem href="/" sx={{ p: 0 }}>
               <ListItemButton>
                 <ListItemIcon>
-                  <MailIcon />
+                  <LeaderboardIcon />
                 </ListItemIcon>
-                <ListItemText primary="Leaderboard" />
+                <ListItemText primary="Leader board" />
+              </ListItemButton>
+            </ListItem>
+            <ListItem href="/" sx={{ p: 0 }}>
+              <ListItemButton>
+                <ListItemIcon>
+                  <MouseIcon />
+                </ListItemIcon>
+                <ListItemText primary="Browse Channels" />
+              </ListItemButton>
+            </ListItem>
+            <ListItem href="/" sx={{ p: 0 }}>
+              <ListItemButton>
+                <ListItemIcon>
+                  <LanguageIcon />
+                </ListItemIcon>
+                <ListItemText primary="Website" />
               </ListItemButton>
             </ListItem>
             <ListItem onClick={handleClick}>

@@ -9,7 +9,9 @@
   padding: 1.2rem;
   margin: 0;
 }
-
+/* .custom-btn-appbar + .custom-btn-appbar {
+  padding-left: 0;
+} */
 .a__toast {
   background-color: #f3f4f8;
   display: flex;
